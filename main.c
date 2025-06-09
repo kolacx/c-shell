@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "users.h"
@@ -18,5 +19,6 @@ int main(int argc, char **argv) {
         parse_command(buffer);
         printf("$ ");
     }
+
     return 0;
 }
