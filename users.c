@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 
 user_t *users[1024];
@@ -14,10 +15,12 @@ void init_users(void) {
     }
 }
 
-void show_user() {
+void show_user(int stream) {
     for (int i = 0; i < 1024; i++) {
         if (users[i] != NULL) {
-            printf("\t%d) Name: %s, Age: %d\n", i + 1, users[i]->name, users[i]->age);
+            char buffer[BUFSIZ];
+            int len = snprintf(buffer, sizeof(buffer), "\t%d) Name: %s, Age: %d\n", i + 1, users[i]->name, users[i]->age);
+            write(stream, buffer, len);
         }
     }
 }

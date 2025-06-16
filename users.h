@@ -9,7 +9,7 @@ struct user_s {
 typedef struct user_s user_t;
 
 extern void init_users(void);
-extern void show_user(void);
+extern void show_user(int stream);
 extern void del_user(char *name);
 extern user_t *add_user(char *name, int age);
 
